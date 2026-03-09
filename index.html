@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareXパートナー | 老人ホーム入居サポート専門</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;700;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EFF6F0;
+    --white: #F8FBF8;
+    --sage: #4A8C5C;
+    --sage-dark: #2E6B42;
+    --sage-pale: #C2DEC9;
+    --sage-light: #E2F0E5;
+    --charcoal: #2A3B2E;
+    --gray: #5E7065;
+    --light: #C8DDD0;
+    --terra: #E07B4A;
+    --gold: #A07840;
+    --hero-bg: #2E4A38;
+    --hero-accent: #3A5C46;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ========== HEADER ========== */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(46,74,56,0.97);
+    backdrop-filter: blur(10px);
+    padding: 0 40px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.05em;
+  }
+  .logo span { color: var(--sage); }
+
+  .header-contact {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .header-tel {
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: 1.05rem;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .header-tel:hover { color: var(--sage); }
+  .header-cta {
+    background: var(--sage);
+    color: white;
+    padding: 8px 20px;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .header-cta:hover { background: var(--sage-dark); }
+
+  /* ========== HERO ========== */
+  .hero {
+    padding-top: 60px;
+    background: var(--hero-bg);
+    position: relative;
+    overflow: hidden;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .hero-bg-circle:nth-child(1) { width: 600px; height: 600px; top: -200px; right: -100px; }
+  .hero-bg-circle:nth-child(2) { width: 900px; height: 900px; top: -350px; right: -300px; }
+  .hero-bg-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.04) 100%);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 72px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--sage);
+  }
+
+  .hero h1 {
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: white;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    color: var(--sage);
+    font-style: normal;
+  }
+
+  .hero-desc {
+    font-size: 0.9rem;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--sage);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 2px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--sage-dark); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    padding: 14px 32px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px;
+    font-size: 0.88rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: white; color: white; }
+
+  /* 右：数字 */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 24px 20px;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+  .stat-card:hover { background: rgba(255,255,255,0.08); }
+  .stat-num {
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--sage);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+  }
+  .stat-card.wide {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+  }
+  .stat-card.wide .stat-num { font-size: 1.4rem; margin: 0; }
+
+  /* ========== SECTION COMMON ========== */
+  .section {
+    padding: 88px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-head {
+    margin-bottom: 52px;
+  }
+  .section-head.center { text-align: center; }
+  .section-head.center .eyebrow { justify-content: center; }
+  .section-head.center .eyebrow::before { display: none; }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 22px; height: 1px;
+    background: var(--sage);
+  }
+
+  .section-title {
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+    font-weight: 700;
+    color: var(--charcoal);
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+    margin-bottom: 12px;
+  }
+  .section-desc {
+    font-size: 0.88rem;
+    line-height: 1.9;
+    color: var(--gray);
+    max-width: 560px;
+  }
+  .section-head.center .section-desc { margin: 0 auto; }
+
+  /* ========== SERVICES GRID ========== */
+  .services-wrap { background: var(--white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .srv-card {
+    background: var(--bg);
+    padding: 32px 28px;
+    border-radius: 3px;
+    border: 1.5px solid transparent;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .srv-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 3px;
+    background: var(--sage);
+    transition: width 0.35s ease;
+  }
+  .srv-card:hover {
+    border-color: var(--sage-pale);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+  }
+  .srv-card:hover::after { width: 100%; }
+
+  .srv-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .srv-num {
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--light);
+    position: absolute;
+    top: 16px; right: 20px;
+    line-height: 1;
+    transition: color 0.25s;
+  }
+  .srv-card:hover .srv-num { color: var(--sage-pale); }
+  .srv-name {
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+  }
+  .srv-desc {
+    font-size: 0.82rem;
+    line-height: 1.85;
+    color: var(--gray);
+    margin-bottom: 16px;
+  }
+  .srv-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .srv-tag {
+    font-size: 0.68rem;
+    padding: 3px 10px;
+    background: var(--white);
+    border: 1px solid var(--light);
+    border-radius: 2px;
+    color: var(--gray);
+  }
+
+  /* ========== FLOW ========== */
+  .flow-wrap { background: var(--hero-bg); }
+  .flow-wrap .section-title { color: white; }
+  .flow-wrap .section-desc { color: rgba(255,255,255,0.4); }
+  .flow-wrap .eyebrow { color: var(--sage); }
+  .flow-wrap .eyebrow::before { background: var(--sage); }
+
+  .flow-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+    margin-top: 8px;
+  }
+  .flow-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: 10%; right: 10%;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+  .flow-step { text-align: center; padding: 0 12px; position: relative; z-index: 1; }
+  .flow-dot {
+    width: 56px; height: 56px;
+    background: rgba(95,148,100,0.15);
+    border: 1px solid var(--sage);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--sage);
+  }
+  .flow-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+  }
+  .flow-desc {
+    font-size: 0.72rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ========== CONTACT ========== */
+  .contact-wrap { background: var(--bg); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-info-title {
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+  .contact-info-desc {
+    font-size: 0.85rem;
+    line-height: 1.9;
+    color: var(--gray);
+    margin-bottom: 32px;
+  }
+  .contact-items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+    background: var(--bg);
+    border-radius: 3px;
+    transition: background 0.2s;
+  }
+  .contact-item:hover { background: var(--sage-light); }
+  .ci-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .ci-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: var(--gray);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .ci-value {
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .ci-value:hover { color: var(--sage-dark); }
+
+  .contact-cta-box {
+    background: var(--hero-bg);
+    border-radius: 4px;
+    padding: 40px 36px;
+    text-align: center;
+  }
+  .cta-box-title {
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+  }
+  .cta-box-desc {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+  .cta-box-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cta-big-btn {
+    display: block;
+    padding: 16px 20px;
+    border-radius: 3px;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .cta-big-btn.tel {
+    background: var(--sage);
+    color: white;
+  }
+  .cta-big-btn.tel:hover { background: var(--sage-dark); }
+  .cta-big-btn.mail {
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .cta-big-btn.mail:hover { background: rgba(255,255,255,0.12); color: white; }
+  .cta-note {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    margin-top: 16px;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: #1E3228;
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-logo {
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+  }
+  .footer-logo span { color: var(--sage); }
+  .footer-copy {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ========== ANIMATIONS ========== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-text-wrap > * {
+    animation: fadeUp 0.6s ease both;
+    opacity: 0;
+  }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.25s; }
+  .hero-desc { animation-delay: 0.4s; }
+  .hero-btns { animation-delay: 0.55s; }
+  .hero-stats { animation: fadeUp 0.6s 0.4s ease both; }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 60px 28px; }
+    .hero-stats { grid-template-columns: repeat(4, 1fr); }
+    .stat-card.wide { grid-column: auto; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .flow-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .flow-steps::before { display: none; }
+    .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+    .section { padding: 64px 28px; }
+    header { padding: 0 20px; }
+    footer { padding: 24px 20px; }
+  }
+  @media (max-width: 600px) {
+    header { height: 54px; }
+    .header-tel { display: none; }
+    .logo { font-size: 1.1rem; }
+    .hero { min-height: auto; }
+    .hero-inner { padding: 48px 20px; }
+    .hero h1 { font-size: 1.75rem; }
+    .hero-btns { flex-direction: column; }
+    .btn-primary, .btn-outline { text-align: center; padding: 13px 24px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .stat-card.wide { grid-column: 1 / -1; }
+    .services-grid { grid-template-columns: 1fr; }
+    .flow-steps { grid-template-columns: 1fr; }
+    .flow-step { display: flex; align-items: flex-start; gap: 14px; text-align: left; }
+    .flow-dot { flex-shrink: 0; margin: 0; width: 44px; height: 44px; font-size: 1rem; }
+    .section { padding: 52px 20px; }
+    .contact-cta-box { padding: 28px 20px; }
+    footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">CareX<span>パートナー</span></div>
+  <div class="header-contact">
+    <a href="tel:09083346030" class="header-tel">📞 090-8334-6030</a>
+    <a href="/cdn-cgi/l/email-protection#c8b8a9babca6adbaaba9baadb088afa5a9a1a4e6aba7a5" class="header-cta">メールで相談</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-circle"></div>
+  <div class="hero-bg-accent"></div>
+  <div class="hero-inner">
+    <div class="hero-text-wrap">
+      <div class="hero-eyebrow">老人ホーム入居サポート専門</div>
+      <h1>大切な方の<br>新生活を、<br><em>丁寧に</em>お手伝い。</h1>
+      <p class="hero-desc">老人ホームへの入居に伴う、引越し・不用品の廃棄・買取から、施設のご紹介・身元保証・住宅設備工事・空き家管理まで。個人事業主ならではのきめ細やかなサービスで、ご家族の負担を一括サポートします。</p>
+      <div class="hero-btns">
+        <a href="tel:09083346030" class="btn-primary">📞 電話で相談する（無料）</a>
+        <a href="/cdn-cgi/l/email-protection#c0b0a1b2b4aea5b2a3a1b2a5b880a7ada1a9aceea3afad" class="btn-outline">✉️ メールで問い合わせ</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <span class="stat-num">300<small style="font-size:1rem">件+</small></span>
+        <span class="stat-label">累計サポート実績</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">7<small style="font-size:1rem">事業</small></span>
+        <span class="stat-label">ワンストップ対応</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">0<small style="font-size:1rem">円</small></span>
+        <span class="stat-label">相談・見積り費用</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">即日</span>
+        <span class="stat-label">ご連絡・ご相談対応</span>
+      </div>
+      <div class="stat-card wide">
+        <span class="stat-num">📍</span>
+        <div>
+          <span class="stat-label" style="display:block;margin-bottom:2px;">対応エリア</span>
+          <span style="font-size:0.88rem;color:rgba(255,255,255,0.7);">名古屋市近郊・愛知県全域</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<div class="services-wrap">
+  <div class="section">
+    <div class="section-head">
+      <div class="eyebrow">Services</div>
+      <h2 class="section-title">7つの専門サービス</h2>
+      <p class="section-desc">入居前の準備から入居後の生活サポートまで、必要なことをまとめてご依頼いただけます。</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="srv-card">
+        <span class="srv-num">01</span>
+        <span class="srv-icon">🏠</span>
+        <div class="srv-name">老人ホーム紹介</div>
+        <p class="srv-desc">ご本人・ご家族の状況に合わせた最適な施設をご提案。希望条件の整理から見学同行まで丁寧にサポートします。</p>
+        <div class="srv-tags">
+          <span class="srv-tag">条件整理</span>
+          <span class="srv-tag">施設提案</span>
+          <span class="srv-tag">見学同行</span>
+          <span class="srv-tag">入居手続き</span>
+        </div>
+      </div>
+
+      <div class="srv-card">
+        <span class="srv-num">02</span>
+        <span class="srv-icon">🤝</span>
+        <div class="srv-name">身元保証サービス</div>
+        <p class="srv-desc">身元保証人がいない方のご支援。入居時の身元保証から、緊急連絡・入院・退去時の手続きまでお任せください。</p>
+        <div class="srv-tags">
+          <span class="srv-tag">身元保証</span>
+          <span class="srv-tag">緊急連絡対応</span>
+          <span class="srv-tag">入退院サポート</span>
+        </div>
+      </div>
+
+      <div class="srv-card">
+        <span class="srv-num">03</span>
+        <span class="srv-icon">🚛</span>
+        <div class="srv-name">引越しサービス</div>
+        <p class="srv-desc">老人ホームへの入居に特化した引越し。必要な荷物だけを丁寧に梱包・搬送し、新居でのセッティングまで対応。</p>
+        <div class="srv-tags">
+          <span class="srv-tag">荷物の仕分け</span>
+          <span class="srv-tag">梱包・搬送</span>
+          <span class="srv-tag">搬入・設置</span>
+        </div>
+      </div>
+
+      <div class="srv-card">
+        <span class="srv-num">04</span>
+        <span class="srv-icon">♻️</span>
+        <div class="srv-name">不用品の廃棄・処分</div>
+        <p class="srv-desc">持っていけない家具・家電・衣類などを適切な方法で廃棄処分。遺品整理もお気軽にご相談ください。</p>
+        <div class="srv-tags">
+          <span class="srv-tag">家具・家電</span>
+          <span class="srv-tag">大型ゴミ対応</span>
+          <span class="srv-tag">遺品整理</span>
+        </div>
+      </div>
+
+      <div class="srv-card">
+        <span class="srv-num">05</span>
+        <span class="srv-icon">💴</span>
+        <div class="srv-name">不用品の買取</div>
+        <p class="srv-desc">家具・家電・貴金属・着物など、価値あるものを適正価格で買取。入居費用の一部に充てることができます。</p>
+        <div class="srv-tags">
+          <span class="srv-tag">家電・家具</span>
+          <span class="srv-tag">着物・貴金属</span>
+          <span class="srv-tag">骨董品</span>
+        </div>
+      </div>
+
+      <div class="srv-card">
+        <span class="srv-num">06</span>
+        <span class="srv-icon">🔧</span>
+        <div class="srv-name">住宅設備工事</div>
+        <p class="srv-desc">退去前の原状回復工事やリフォーム、バリアフリー対応工事など。退去後の住宅整理もまとめてご依頼いただけます。</p>
+        <div class="srv-tags">
+          <span class="srv-tag">原状回復</span>
+          <span class="srv-tag">バリアフリー</span>
+          <span class="srv-tag">リフォーム</span>
+        </div>
+      </div>
+
+      <div class="srv-card">
+        <span class="srv-num">07</span>
+        <span class="srv-icon">🏡</span>
+        <div class="srv-name">空き家管理</div>
+        <p class="srv-desc">施設入居後に残された自宅の管理を代行。定期巡回・郵便確認・草刈り・水回り点検など、遠方にお住まいのご家族も安心してお任せいただけます。</p>
+        <div class="srv-tags">
+          <span class="srv-tag">定期巡回</span>
+          <span class="srv-tag">郵便・通帳確認</span>
+          <span class="srv-tag">草刈り・清掃</span>
+          <span class="srv-tag">水回り点検</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Flow -->
+<div class="flow-wrap">
+  <div class="section">
+    <div class="section-head center">
+      <div class="eyebrow">How it works</div>
+      <h2 class="section-title">ご利用の流れ</h2>
+      <p class="section-desc">お問い合わせから完了まで、シンプルな5ステップ。</p>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-dot">1</div>
+        <div class="flow-title">お問い合わせ</div>
+        <p class="flow-desc">電話・メールでお気軽にご相談ください</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">2</div>
+        <div class="flow-title">状況のヒアリング</div>
+        <p class="flow-desc">ご本人・ご家族の状況・ご希望を確認</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">3</div>
+        <div class="flow-title">現地訪問・お見積り</div>
+        <p class="flow-desc">ご自宅拝見・無料でお見積りをご提示</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">4</div>
+        <div class="flow-title">サービス実施</div>
+        <p class="flow-desc">ご希望の日程で丁寧に対応します</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">5</div>
+        <div class="flow-title">完了・お支払い</div>
+        <p class="flow-desc">作業完了後にご確認・お支払い</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contact -->
+<div class="contact-wrap">
+  <div class="section">
+    <div class="section-head">
+      <div class="eyebrow">Contact</div>
+      <h2 class="section-title">お問い合わせ・ご相談</h2>
+      <p class="section-desc">まずはお気軽にご連絡ください。相談・見積りはすべて無料です。</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-info-title">どんな小さなことでも<br>お気軽にどうぞ</p>
+        <p class="contact-info-desc">入居の日程が決まっていなくても大丈夫です。「何から始めればいいかわからない」という段階からご相談いただけます。</p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="ci-icon">📞</div>
+            <div>
+              <span class="ci-label">Tel</span>
+              <a href="tel:09083346030" class="ci-value">090-8334-6030</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">✉️</div>
+            <div>
+              <span class="ci-label">Mail</span>
+              <a href="/cdn-cgi/l/email-protection#c1b1a0b3b5afa4b3a2a0b3a4b981a6aca0a8adefa2aeac" class="ci-value"><span class="__cf_email__" data-cfemail="2858495a5c464d5a4b495a4d50684f45494144064b4745">[email&#160;protected]</span></a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">📍</div>
+            <div>
+              <span class="ci-label">Area</span>
+              <span class="ci-value">名古屋市近郊・愛知県全域</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">🕐</div>
+            <div>
+              <span class="ci-label">Hours</span>
+              <span class="ci-value" style="font-size:0.88rem;">平日 9:00〜18:00（土日要相談）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-cta-box">
+        <div class="cta-box-title">今すぐ相談する</div>
+        <p class="cta-box-desc">相談・見積りはすべて無料。<br>お気軽にご連絡ください。</p>
+        <div class="cta-box-btns">
+          <a href="tel:09083346030" class="cta-big-btn tel">📞 090-8334-6030 に電話する</a>
+          <a href="/cdn-cgi/l/email-protection#4737263533292235242635223f07202a262e2b6924282a" class="cta-big-btn mail">✉️ メールで問い合わせる</a>
+        </div>
+        <p class="cta-note">※ 返信は24時間以内を目安にご連絡いたします</p>
+      </d
