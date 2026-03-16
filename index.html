@@ -1,1 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareXパートナー｜名古屋の老人ホーム紹介・生活サポート</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2d6a4f;
+    --green-light: #40916c;
+    --green-pale: #d8f3dc;
+    --green-bg: #f0f7f2;
+    --gold: #b5902a;
+    --dark: #1a2e22;
+    --text: #2c3e32;
+    --gray: #6b7b6e;
+    --white: #ffffff;
+    --shadow: 0 4px 24px rgba(45,106,79,0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 110%; scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; color: var(--text); background: var(--white); line-height: 1.8; }
+  header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 2px solid var(--green-pale); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px; box-shadow: 0 2px 12px rgba(45,106,79,0.08); }
+  .logo { font-family: 'Noto Serif JP', serif; font-size: 1.25rem; font-weight: 700; color: var(--green); letter-spacing: 0.05em; }
+  .logo span { color: var(--gold); }
+  nav { display: flex; gap: 2rem; }
+  nav a { font-size: 0.82rem; color: var(--text); text-decoration: none; font-weight: 500; letter-spacing: 0.05em; transition: color 0.2s; }
+  nav a:hover { color: var(--green); }
+  .header-cta { background: var(--green); color: white; padding: 0.4rem 1.2rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700; text-decoration: none; letter-spacing: 0.05em; transition: background 0.2s; }
+  .header-cta:hover { background: var(--green-light); }
+  .hero { margin-top: 64px; background: linear-gradient(160deg, var(--dark) 0%, var(--green) 60%, var(--green-light) 100%); min-height: 92vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 6rem 8%; }
+  .hero::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); opacity: 0.4; }
+  .hero-content { position: relative; z-index: 2; max-width: 680px; }
+  .hero-badge { display: inline-block; background: rgba(181,144,42,0.25); border: 1px solid var(--gold); color: #f0d080; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; padding: 0.3rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; }
+  .hero h1 { font-family: 'Noto Serif JP', serif; font-size: clamp(2rem, 4vw, 3rem); color: white; line-height: 1.45; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: 0.02em; }
+  .hero h1 em { font-style: normal; color: #b8e8c4; display: block; font-size: 0.9em; }
+  .hero-desc { color: rgba(255,255,255,0.82); font-size: 1rem; margin-bottom: 2.5rem; line-height: 1.9; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: white; padding: 1rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 0.95rem; text-decoration: none; letter-spacing: 0.06em; transition: all 0.2s; box-shadow: 0 4px 16px rgba(181,144,42,0.4); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(181,144,42,0.5); }
+  .btn-line { background: #06c755; color: white; padding: 1rem 2.2rem; border-radius: 50px; font-weight: 700; font-size: 0.95rem; text-decoration: none; letter-spacing: 0.06em; display: flex; align-items: center; gap: 0.5rem; transition: all 0.2s; }
+  .btn-line:hover { transform: translateY(-2px); background: #05b84c; }
+  .hero-stats { display: flex; gap: 3rem; margin-top: 3rem; }
+  .stat { text-align: center; }
+  .stat-num { font-family: 'Noto Serif JP', serif; font-size: 2.2rem; font-weight: 700; color: white; display: block; line-height: 1; }
+  .stat-num span { font-size: 1.1rem; }
+  .stat-label { font-size: 0.72rem; color: rgba(255,255,255,0.7); letter-spacing: 0.1em; margin-top: 0.3rem; }
+  section { padding: 5rem 8%; }
+  .section-label { font-size: 0.72rem; letter-spacing: 0.2em; color: var(--green); font-weight: 700; text-transform: uppercase; margin-bottom: 0.6rem; }
+  .section-title { font-family: 'Noto Serif JP', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--dark); font-weight: 700; line-height: 1.5; margin-bottom: 1rem; }
+  .section-sub { color: var(--gray); max-width: 560px; line-height: 1.9; font-size: 0.9rem; margin-bottom: 3rem; }
+  .worry { background: var(--green-bg); }
+  .worry-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-top: 2.5rem; }
+  .worry-card { background: white; border-radius: 12px; padding: 1.6rem; border-left: 4px solid var(--green-light); box-shadow: var(--shadow); display: flex; gap: 1rem; align-items: flex-start; }
+  .worry-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .worry-card p { font-size: 0.88rem; color: var(--text); line-height: 1.7; font-weight: 500; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .service-card { background: var(--green-bg); border-radius: 16px; padding: 2rem; border: 1px solid #c5e8d0; transition: all 0.25s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--green), var(--green-light)); }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(45,106,79,0.15); background: white; }
+  .service-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+  .service-card h3 { font-family: 'Noto Serif JP', serif; font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 0.6rem; }
+  .service-card p { font-size: 0.82rem; color: var(--gray); line-height: 1.8; }
+  .flow { background: var(--dark); color: white; }
+  .flow .section-title { color: white; }
+  .flow .section-sub { color: rgba(255,255,255,0.6); }
+  .flow .section-label { color: #7ec89a; }
+  .flow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; position: relative; }
+  .flow-step { text-align: center; padding: 2rem 1rem; position: relative; }
+  .flow-step:not(:last-child)::after { content: '›'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); color: var(--green-light); font-size: 2rem; font-weight: 300; }
+  .step-num { width: 52px; height: 52px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Noto Serif JP', serif; font-weight: 700; font-size: 1.2rem; color: white; margin: 0 auto 1rem; }
+  .flow-step h4 { font-size: 0.88rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+  .flow-step p { font-size: 0.75rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+  .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+  .feature-list { list-style: none; }
+  .feature-list li { display: flex; gap: 1rem; align-items: flex-start; padding: 1.2rem 0; border-bottom: 1px solid var(--green-pale); }
+  .feature-list li:last-child { border-bottom: none; }
+  .feature-check { width: 28px; height: 28px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.8rem; color: white; margin-top: 0.1rem; }
+  .feature-list h4 { font-weight: 700; font-size: 0.92rem; color: var(--dark); margin-bottom: 0.2rem; }
+  .feature-list p { font-size: 0.8rem; color: var(--gray); line-height: 1.7; }
+  .features-visual { background: var(--green-bg); border-radius: 20px; padding: 3rem; text-align: center; border: 1px solid #c5e8d0; }
+  .visual-emoji { font-size: 5rem; margin-bottom: 1rem; display: block; }
+  .features-visual h3 { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; color: var(--dark); margin-bottom: 0.8rem; font-weight: 700; }
+  .features-visual p { font-size: 0.82rem; color: var(--gray); line-height: 1.8; }
+  .area { background: var(--green-bg); }
+  .area-tag-wrap { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .area-tag { background: white; border: 1px solid #b7dcc2; color: var(--green); padding: 0.3rem 0.9rem; border-radius: 50px; font-size: 0.8rem; font-weight: 500; }
+  .contact { background: linear-gradient(135deg, var(--green), var(--dark)); color: white; text-align: center; }
+  .contact .section-title { color: white; }
+  .contact .section-sub { color: rgba(255,255,255,0.75); margin: 0 auto 2.5rem; }
+  .contact .section-label { color: #8dd6a6; }
+  .contact-cards { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+  .contact-card { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 16px; padding: 2rem 2.5rem; min-width: 240px; backdrop-filter: blur(4px); transition: background 0.2s; }
+  .contact-card:hover { background: rgba(255,255,255,0.2); }
+  .contact-card .icon { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+  .contact-card h4 { font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-bottom: 0.4rem; letter-spacing: 0.1em; }
+  .contact-card a, .contact-card p { color: white; font-size: 1rem; font-weight: 700; text-decoration: none; }
+  .btn-line-large { display: inline-flex; align-items: center; gap: 0.6rem; background: #06c755; color: white; padding: 1.1rem 3rem; border-radius: 50px; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.06em; text-decoration: none; box-shadow: 0 6px 24px rgba(6,199,85,0.35); transition: all 0.2s; margin-top: 1rem; }
+  .btn-line-large:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(6,199,85,0.45); }
+  footer { background: var(--dark); color: rgba(255,255,255,0.6); text-align: center; padding: 2rem 8%; font-size: 0.78rem; letter-spacing: 0.06em; }
+  footer strong { color: white; }
+  @media (max-width: 768px) {
+    nav { display: none; }
+    .hero { padding: 4rem 6% 5rem; }
+    .hero-stats { gap: 1.5rem; }
+    .features-grid { grid-template-columns: 1fr; }
+    .flow-step:not(:last-child)::after { display: none; }
+    section { padding: 4rem 6%; }
+  }
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">CareX<span>パートナー</span></div>
+  <nav>
+    <a href="#services">サービス</a>
+    <a href="#flow">ご相談の流れ</a>
+    <a href="#features">選ばれる理由</a>
+    <a href="#area">対応エリア</a>
+    <a href="#contact">お問い合わせ</a>
+  </nav>
+  <a href="https://line.me/R/ti/p/@090htktt" class="header-cta">📲 LINE相談</a>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">名古屋エリア 完全無料相談</div>
+    <h1>
+      老人ホーム選びから<br>
+      引越し・空き家管理まで
+      <em>ぜんぶ、ひとりに相談できる。</em>
+    </h1>
+    <p class="hero-desc">
+      「どこに相談すればいいかわからない」——そんな不安、私たちにお任せください。<br>
+      老人ホームの紹介から、身元保証・引越し・不用品処分・住宅工事まで、<br>
+      CareXパートナーが一貫してサポートします。
+    </p>
+    <div class="hero-btns">
+      <a href="https://line.me/R/ti/p/@090htktt" class="btn-line">
+        <svg width="20" height="20" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="white"/><path d="M20 8C13.4 8 8 12.8 8 18.7c0 3.5 1.9 6.6 4.8 8.7-.2.6-.9 2.4-1 2.6 0 0 0 .2.1.2l3-1.8c.8.2 1.6.3 2.4.4-.3-.8-.5-1.7-.5-2.6 0-5 4.6-9.1 10.3-9.1.4 0 .8 0 1.2.1C27.8 12.3 24.2 8 20 8z" fill="#06C755"/></svg>
+        LINEで無料相談
+      </a>
+      <a href="#services" class="btn-primary">サービスを見る →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">0<span>円</span></span><div class="stat-label">老人ホーム紹介料</div></div>
+      <div class="stat"><span class="stat-num">7<span>種</span></span><div class="stat-label">サポートメニュー</div></div>
+      <div class="stat"><span class="stat-num">365<span>日</span></span><div class="stat-label">相談受付</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="worry" id="worry">
+  <div class="section-label">WORRY</div>
+  <h2 class="section-title">こんなお悩みありませんか？</h2>
+  <div class="worry-grid fade-up">
+    <div class="worry-card"><span class="worry-icon">🏠</span><p>親の介護施設をどこにすればいいか全然わからない…</p></div>
+    <div class="worry-card"><span class="worry-icon">📋</span><p>入居するとき身元保証人になってくれる人がいない</p></div>
+    <div class="worry-card"><span class="worry-icon">🚛</span><p>施設への引越しと実家の片付けを同時にやらないといけない</p></div>
+    <div class="worry-card"><span class="worry-icon">🏚️</span><p>誰も住まなくなった実家が心配。空き家管理を誰かに頼みたい</p></div>
+    <div class="worry-card"><span class="worry-icon">🛠️</span><p>バリアフリーや手すり設置などリフォームも必要になってきた</p></div>
+    <div class="worry-card"><span class="worry-icon">📦</span><p>大量の家具・家電の処分と、まだ使えるものの買取をお願いしたい</p></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-label">SERVICES</div>
+  <h2 class="section-title">7つのサポートメニュー</h2>
+  <p class="section-sub">老人ホーム探しから新生活の準備、実家の後処理まで。関連する手続きをワンストップでご対応します。</p>
+  <div class="services-grid fade-up">
+    <div class="service-card"><span class="service-icon">🏥</span><h3>老人ホーム紹介</h3><p>ご予算・立地・医療ニーズに合わせた施設を無料でご紹介。施設見学のご同行も対応します。</p></div>
+    <div class="service-card"><span class="service-icon">🤝</span><h3>身元保証サービス</h3><p>入居時の身元保証人が見つからない方を全力でサポート。安心して施設入居いただけます。</p></div>
+    <div class="service-card"><span class="service-icon">🚚</span><h3>引越しサービス</h3><p>施設への入居に伴う荷物の移動・搬入をスムーズに。大型家具の移動もお任せください。</p></div>
+    <div class="service-card"><span class="service-icon">🗑️</span><h3>不用品処分</h3><p>実家に残った家具・日用品の処分を代行。ご自身で動かなくてもすべて対応します。</p></div>
+    <div class="service-card"><span class="service-icon">💰</span><h3>不用品買取</h3><p>まだ使えるものは買取。処分費用を少しでも抑えつつ、物を大切にします。</p></div>
+    <div class="service-card"><span class="service-icon">🔨</span><h3>住宅設備工事</h3><p>手すり設置・バリアフリーリフォームから小修繕まで。安全な住環境づくりをご支援します。</p></div>
+    <div class="service-card"><span class="service-icon">🏡</span><h3>空き家管理</h3><p>誰も住まなくなった実家の定期巡回・通気・郵便確認など、空き家の維持管理を代行します。</p></div>
+  </div>
+</section>
+
+<section class="flow" id="flow">
+  <div class="section-label">FLOW</div>
+  <h2 class="section-title">ご相談の流れ</h2>
+  <p class="section-sub">LINEかお電話でご連絡いただくだけ。難しい手続きは一切ありません。</p>
+  <div class="flow-steps fade-up">
+    <div class="flow-step"><div class="step-num">1</div><h4>まずはご連絡</h4><p>LINEまたはお電話でお気軽にご相談ください。秘密厳守です。</p></div>
+    <div class="flow-step"><div class="step-num">2</div><h4>状況のヒアリング</h4><p>ご本人・ご家族の状況をていねいにお聞きします。</p></div>
+    <div class="flow-step"><div class="step-num">3</div><h4>プランのご提案</h4><p>必要なサービスを組み合わせた最適なプランをご提案します。</p></div>
+    <div class="flow-step"><div class="step-num">4</div><h4>施設見学・見積</h4><p>施設見学のご同行や各サービスのお見積りを無料でご提供。</p></div>
+    <div class="flow-step"><div class="step-num">5</div><h4>サポート開始</h4><p>ご納得いただいたうえで、安心してお任せください。</p></div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="section-label">FEATURES</div>
+  <h2 class="section-title">CareXパートナーが<br>選ばれる理由</h2>
+  <div class="features-grid">
+    <ul class="feature-list fade-up">
+      <li><div class="feature-check">✓</div><div><h4>老人ホーム紹介料は完全無料</h4><p>ご紹介料はすべて施設側からいただく仕組みです。ご家族のご負担は0円です。</p></div></li>
+      <li><div class="feature-check">✓</div><div><h4>7サービスをひとり担当者が一貫対応</h4><p>たらい回しにしません。担当者が最初から最後まで責任を持って対応します。</p></div></li>
+      <li><div class="feature-check">✓</div><div><h4>名古屋エリアに精通</h4><p>地元密着だからこそわかる施設の特徴や地域情報をもとに、本当に合う施設をご紹介します。</p></div></li>
+      <li><div class="feature-check">✓</div><div><h4>迅速・柔軟な対応</h4><p>大手にはできないスピード感と、ご事情に合わせた柔軟なサービスが強みです。</p></div></li>
+      <li><div class="feature-check">✓</div><div><h4>365日相談受付</h4><p>介護の悩みは突然やってきます。土日祝日もLINEでご相談いただけます。</p></div></li>
+    </ul>
+    <div class="features-visual fade-up">
+      <span class="visual-emoji">🌿</span>
+      <h3>「困った」をまとめて<br>解決するパートナー</h3>
+      <p>老人ホーム探しを機に、さまざまな手続きが一気に発生します。CareXパートナーは、そのひとつひとつを並走しながらサポート。ご家族が本当に必要なことに集中できるよう、雑務はすべてお任せください。</p>
+    </div>
+  </div>
+</section>
+
+<section class="area" id="area">
+  <div class="section-label">SERVICE AREA</div>
+  <h2 class="section-title">対応エリア</h2>
+  <p class="section-sub">名古屋市を中心に愛知県全域に対応しています。エリア外もご相談ください。</p>
+  <div class="area-tag-wrap fade-up">
+    <span class="area-tag">名古屋市全区</span><span class="area-tag">春日井市</span><span class="area-tag">一宮市</span><span class="area-tag">小牧市</span><span class="area-tag">瀬戸市</span><span class="area-tag">長久手市</span><span class="area-tag">日進市</span><span class="area-tag">豊田市</span><span class="area-tag">岡崎市</span><span class="area-tag">刈谷市</span><span class="area-tag">安城市</span><span class="area-tag">豊明市</span><span class="area-tag">東海市</span><span class="area-tag">大府市</span><span class="area-tag">知多市</span><span class="area-tag">※その他要相談</span>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="section-label">CONTACT</div>
+  <h2 class="section-title">まずは無料でご相談を</h2>
+  <p class="section-sub">「まだ具体的に決まっていない」「どこから相談すればいいかわからない」という段階でも大歓迎です。お気軽にご連絡ください。</p>
+  <div class="contact-cards">
+    <div class="contact-card"><span class="icon">📲</span><h4>LINE公式アカウント</h4><a href="https://line.me/R/ti/p/@090htktt">@090htktt</a></div>
+    <div class="contact-card"><span class="icon">✉️</span><h4>メール</h4><p>partnercarex@gmail.com</p></div>
+    <div class="contact-card"><span class="icon">🕐</span><h4>受付時間</h4><p>365日 随時受付</p></div>
+  </div>
+  <a href="https://line.me/R/ti/p/@090htktt" class="btn-line-large">
+    <svg width="24" height="24" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="10" fill="white"/><path d="M20 8C13.4 8 8 12.8 8 18.7c0 3.5 1.9 6.6 4.8 8.7-.2.6-.9 2.4-1 2.6 0 0 0 .2.1.2l3-1.8c.8.2 1.6.3 2.4.4-.3-.8-.5-1.7-.5-2.6 0-5 4.6-9.1 10.3-9.1.4 0 .8 0 1.2.1C27.8 12.3 24.2 8 20 8z" fill="#06C755"/></svg>
+    LINEで今すぐ無料相談する
+  </a>
+</section>
+
+<footer>
+  <strong>CareXパートナー</strong>　│　名古屋市<br>
+  <span style="margin-top:0.4rem;display:block;">© 2024 CareX Partner. All rights reserved.</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
 
